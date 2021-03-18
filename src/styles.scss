@@ -3,6 +3,16 @@ html, body, div, p, a, h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-body{
+html, body {
+  font-size: 14px;
+}
+
+body {
   background-color: #fafafa;
+}
+
+input {
+  &.ng-touched.ng-invalid {
+    border: 1px solid #f00 !important;
+  }
 }

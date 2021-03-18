@@ -1,0 +1,3 @@
+<ng-container *ngFor="let key of errorKeys">
+  <div *ngIf="control.touched && control.hasError(key)" class="error-message">{{messages[key]}}</div>
+</ng-container>
