@@ -1,0 +1,13 @@
+@import "../../scss/variables";
+
+:host {
+  display: flex;
+  flex-direction: row;
+  height: 75px;
+  background-color: $primary-color;
+  padding: 0 30px;
+
+  img.logo {
+    height: 25px;
+  }
+}

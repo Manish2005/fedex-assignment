@@ -1,0 +1,36 @@
+<div fxLayout="row" fxLayoutAlign="center start">
+  <app-card title="Sign Up" fxFlex="0 1 500px" style="margin: 10px;">
+    <form>
+      <!-- Name -->
+      <div fxLayout="row wrap" class="name-field-container">
+        <div class="input-container" fxFlex fxLayout="column">
+          <input type="text" placeholder="First Name">
+        </div>
+
+        <div class="input-container" fxFlex fxLayout="column">
+          <input type="text" placeholder="Last Name">
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="input-container" fxLayout="column">
+        <input type="email" placeholder="Email">
+      </div>
+
+      <!-- Password -->
+      <div fxLayout="row wrap" class="password-field-container">
+        <div class="input-container" fxFlex fxLayout="column">
+          <input type="password" placeholder="Password">
+        </div>
+
+        <div class="input-container" fxFlex fxLayout="column">
+          <input type="password" placeholder="Confirm Password">
+        </div>
+      </div>
+
+      <div fxLayout="column">
+        <button class="btn-primary">Submit</button>
+      </div>
+    </form>
+  </app-card>
+</div>
