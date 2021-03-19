@@ -7,12 +7,14 @@ export const ERROR_MESSAGES = {
   },
   email: {
     required: 'Email is required',
-    email: 'Please enter valid Email'
+    email: 'Please enter a valid Email'
   },
   password: {
     required: 'Password is required',
     minlength: 'Password must be at least 8 characters',
-    passwordStrength: 'Please enter a valid password'
+    passwordStrength: 'Please enter a valid password',
+    containLowerUpper: 'Password must contain at least one lowercase and uppercase letters',
+    containsName: 'Password must not contain first name or last name'
   },
   confirmPassword: {
     required: 'Confirm password is required',

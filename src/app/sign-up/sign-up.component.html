@@ -24,7 +24,7 @@
 
       <!-- Email -->
       <div class="input-container" fxLayout="column">
-        <input type="email" placeholder="Email" formControlName="email">
+        <input type="text" placeholder="Email" formControlName="email">
         <app-input-error
           [control]="signUpForm.get('email')"
           [messages]="errorMessages.email">
