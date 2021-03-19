@@ -1,13 +1,11 @@
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
-
-import {SignUpComponent} from './sign-up.component';
+import {of, throwError} from 'rxjs';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {HeaderComponent} from '../shared/components/header/header.component';
-import {InputErrorComponent} from '../shared/components/input-error/input-error.component';
-import {CardComponent} from '../shared/components/card/card.component';
+
+import {SignUpComponent} from './sign-up.component';
+import {HeaderComponent, CardComponent, InputErrorComponent} from '../shared/components';
 import {AccountService} from '../services/account.service';
-import {of, throwError} from 'rxjs';
 
 const formDataValid = {
   firstName: 'Manish',
