@@ -9,7 +9,6 @@ export class FormValidationsService {
   constructor() {
   }
 
-
   /**
    * Password must contain at least one lowercase and one uppercase letters
    * @param control: Form control to be validated

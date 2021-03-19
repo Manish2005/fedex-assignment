@@ -13,6 +13,6 @@ body {
 
 input {
   &.ng-touched.ng-invalid {
-    border: 1px solid #f00 !important;
+    border-color: #f00 !important;
   }
 }

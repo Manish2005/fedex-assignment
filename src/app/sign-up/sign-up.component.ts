@@ -28,7 +28,10 @@ export class SignUpComponent implements OnDestroy {
     this.signUpForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [
+        Validators.required,
+        Validators.email // https://angular.io/api/forms/Validators#email
+      ]],
       password: ['', [
         Validators.required,
         Validators.minLength(8),
