@@ -25,6 +25,7 @@ import {AutofocusDirective} from './directives';
     FooterComponent,
     CardComponent,
     InputErrorComponent,
+
     AutofocusDirective
   ]
 })
