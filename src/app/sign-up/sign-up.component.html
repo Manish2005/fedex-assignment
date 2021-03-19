@@ -1,11 +1,12 @@
 <div fxLayout="row" fxLayoutAlign="center start">
   <app-card title="Create New Account" fxFlex="0 1 600px" style="margin: 10px;">
-    <form [formGroup]="signUpForm" (ngSubmit)="onFormSubmit()">
+    <form [formGroup]="signUpForm" (ngSubmit)="onFormSubmit()" autocomplete="off"
+          *ngIf="!signUpCompleted;else showSuccessMessage">
       <!-- Name -->
       <div fxLayout="row wrap" class="name-field-container">
         <!-- First Name -->
         <div class="input-container" fxFlex fxLayout="column">
-          <input type="text" placeholder="First Name" formControlName="firstName">
+          <input type="text" placeholder="First Name" formControlName="firstName" autocomplete="off">
           <app-input-error
             [control]="signUpForm.get('firstName')"
             [messages]="errorMessages.firstName">
@@ -54,8 +55,22 @@
 
       <!-- Actions -->
       <div fxLayout="column">
-        <button type="submit" class="btn-primary">Submit</button>
+        <button type="submit" class="btn-primary" [disabled]="submitting">Submit</button>
+      </div>
+
+      <div class="error" *ngIf="error" style="color: red; padding-top: 10px;text-align: center;">
+        Error occurred while trying to create account. Please try again.
       </div>
     </form>
+
+    <!-- Show success message -->
+    <ng-template #showSuccessMessage>
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <br>
+        <div>Account created successfully.</div>
+        <br>
+        <button class="btn-primary" (click)="resetSignUp()">Continue</button>
+      </div>
+    </ng-template>
   </app-card>
 </div>

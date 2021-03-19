@@ -47,5 +47,10 @@
       text-transform: uppercase;
       font-weight: bold;
     }
+
+    &[disabled] {
+      background-color: lightgrey;
+      cursor: default;
+    }
   }
 }

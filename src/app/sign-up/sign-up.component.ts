@@ -3,6 +3,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ERROR_MESSAGES} from './sign-up.constants';
 import {FormValidationsService} from './form-validations.service';
 import {Subscription} from 'rxjs';
+import {ISignUpRequest} from './sign-up.model';
+import {AccountService} from '../services/account.service';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-sign-up',
@@ -17,7 +20,17 @@ export class SignUpComponent implements OnDestroy {
 
   private subscriptions: any = {};
 
-  constructor(private fb: FormBuilder, private formValidationsService: FormValidationsService) {
+  signUpCompleted = false;
+
+  submitting = false;
+
+  error = false;
+
+  constructor(
+    private fb: FormBuilder,
+    private formValidationsService: FormValidationsService,
+    private accountService: AccountService
+  ) {
     this.initForm();
   }
 
@@ -40,7 +53,7 @@ export class SignUpComponent implements OnDestroy {
       ]],
       confirmPassword: ['', [
         Validators.required,
-        this.formValidationsService.passwordMatch.bind(this)
+        this.formValidationsService.passwordMatch
       ]]
     });
 
@@ -64,11 +77,28 @@ export class SignUpComponent implements OnDestroy {
    * Handle form submission
    */
   onFormSubmit(): void {
+    // clear existing error message, if needed
+    this.error = false;
+
     if (this.signUpForm.invalid) {
       this.signUpForm.markAllAsTouched();
       this.signUpForm.updateValueAndValidity();
       return;
     }
+
+    const {firstName, lastName, email, password} = this.signUpForm.value;
+    const payload: ISignUpRequest = {firstName, lastName, email, password};
+    this.submitting = true;
+    this.accountService.signUp(payload)
+      .pipe(take(1))
+      .subscribe(res => {
+        this.submitting = false;
+        this.signUpCompleted = true;
+        this.initForm();
+      }, err => {
+        this.submitting = false;
+        this.error = true;
+      });
   }
 
   /**
@@ -78,5 +108,12 @@ export class SignUpComponent implements OnDestroy {
     Object.keys(this.subscriptions).forEach(key => {
       (this.subscriptions[key] as Subscription).unsubscribe();
     });
+  }
+
+  /**
+   * Show empty form
+   */
+  resetSignUp(): void {
+    this.signUpCompleted = false;
   }
 }

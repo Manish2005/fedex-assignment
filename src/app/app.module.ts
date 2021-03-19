@@ -9,6 +9,7 @@ import {SignUpComponent} from './sign-up/sign-up.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {SharedModule} from './shared/shared.module';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,9 +19,10 @@ import {SharedModule} from './shared/shared.module';
   imports: [
     BrowserModule,
     CommonModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     FlexLayoutModule,
-    ReactiveFormsModule,
     FontAwesomeModule,
     SharedModule
   ],
