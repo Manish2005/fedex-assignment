@@ -1,20 +1,19 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-
-import {HeaderComponent} from './header/header.component';
-import {FooterComponent} from './footer/footer.component';
-import {CardComponent} from './card/card.component';
-import {InputErrorComponent} from './input-error/input-error.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
+import {HeaderComponent, FooterComponent, CardComponent, InputErrorComponent} from './components';
+import {AutofocusDirective} from './directives';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     CardComponent,
-    InputErrorComponent
+    InputErrorComponent,
+
+    AutofocusDirective
   ],
   imports: [
     CommonModule,
@@ -25,7 +24,8 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     HeaderComponent,
     FooterComponent,
     CardComponent,
-    InputErrorComponent
+    InputErrorComponent,
+    AutofocusDirective
   ]
 })
 export class SharedModule {

@@ -6,7 +6,7 @@
       <div fxLayout="row wrap" class="name-field-container">
         <!-- First Name -->
         <div class="input-container" fxFlex fxLayout="column">
-          <input type="text" placeholder="First Name" formControlName="firstName" autocomplete="off">
+          <input type="text" placeholder="First Name" formControlName="firstName" autocomplete="off" appAutofocus>
           <app-input-error
             [control]="signUpForm.get('firstName')"
             [messages]="errorMessages.firstName">
