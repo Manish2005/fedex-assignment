@@ -4,3 +4,7 @@ export interface ISignUpRequest {
   email: string;
   password: string;
 }
+
+export interface ISignUpFormData extends ISignUpRequest {
+  confirmPassword: string;
+}

@@ -1,11 +1,12 @@
 import {Component, OnDestroy} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ERROR_MESSAGES} from './sign-up.constants';
-import {FormValidationsService} from './form-validations.service';
 import {Subscription} from 'rxjs';
-import {ISignUpRequest} from './sign-up.model';
-import {AccountService} from '../services/account.service';
 import {take} from 'rxjs/operators';
+
+import {ERROR_MESSAGES} from './sign-up.constants';
+import {FormValidationsService} from '../services/form-validations.service';
+import {ISignUpFormData, ISignUpRequest} from './sign-up.model';
+import {AccountService} from '../services/account.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -58,17 +59,17 @@ export class SignUpComponent implements OnDestroy {
     });
 
     // update password validations when first name value changes
-    this.subscriptions.firstNameField = this.signUpForm.get('firstName').valueChanges.subscribe(val => {
+    this.subscriptions.firstNameField = this.signUpForm.get('firstName').valueChanges.subscribe(() => {
       this.signUpForm.get('password').updateValueAndValidity();
     });
 
     // update password validations when last name value changes
-    this.subscriptions.laststNameField = this.signUpForm.get('lastName').valueChanges.subscribe(val => {
+    this.subscriptions.laststNameField = this.signUpForm.get('lastName').valueChanges.subscribe(() => {
       this.signUpForm.get('password').updateValueAndValidity();
     });
 
     // update confirm password validations when password value changes
-    this.subscriptions.passwordField = this.signUpForm.get('password').valueChanges.subscribe(val => {
+    this.subscriptions.passwordField = this.signUpForm.get('password').valueChanges.subscribe(() => {
       this.signUpForm.get('confirmPassword').updateValueAndValidity();
     });
   }
@@ -86,16 +87,16 @@ export class SignUpComponent implements OnDestroy {
       return;
     }
 
-    const {firstName, lastName, email, password} = this.signUpForm.value;
+    const {firstName, lastName, email, password} = (this.signUpForm.value as ISignUpFormData);
     const payload: ISignUpRequest = {firstName, lastName, email, password};
     this.submitting = true;
     this.accountService.signUp(payload)
       .pipe(take(1))
-      .subscribe(res => {
+      .subscribe(() => {
         this.submitting = false;
         this.signUpCompleted = true;
         this.initForm();
-      }, err => {
+      }, () => {
         this.submitting = false;
         this.error = true;
       });
