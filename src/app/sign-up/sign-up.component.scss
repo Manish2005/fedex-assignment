@@ -15,7 +15,7 @@
 
       &:focus {
         margin: -1px;
-        border: 2px solid #4d148c;
+        border: 2px solid $primary-color;
       }
     }
   }
@@ -52,5 +52,19 @@
       background-color: lightgrey;
       cursor: default;
     }
+  }
+
+  .signup-success {
+    fa-icon {
+      font-size: 50px;
+      color: green;
+      margin-bottom: 10px;
+    }
+  }
+
+  .signup-error {
+    color: red;
+    padding-top: 10px;
+    text-align: center;
   }
 }

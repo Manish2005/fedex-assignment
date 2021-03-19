@@ -3,4 +3,10 @@
   flex-direction: column;
   background-color: #e3e3e3;
   height: 200px;
+
+  div.placeholder {
+    font-size: 50px;
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.2);
+  }
 }

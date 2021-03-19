@@ -58,17 +58,18 @@
         <button type="submit" class="btn-primary" [disabled]="submitting">Submit</button>
       </div>
 
-      <div class="error" *ngIf="error" style="color: red; padding-top: 10px;text-align: center;">
+      <div class="signup-error" *ngIf="error">
         Error occurred while trying to create account. Please try again.
       </div>
     </form>
 
     <!-- Show success message -->
     <ng-template #showSuccessMessage>
-      <div fxLayout="column" fxLayoutAlign="center center">
+      <div fxLayout="column" fxLayoutAlign="center center" class="signup-success">
         <br>
+        <fa-icon [icon]="faCheckCircle"></fa-icon>
         <div>Account created successfully.</div>
-        <br>
+        <br><br>
         <button class="btn-primary" (click)="resetSignUp()">Continue</button>
       </div>
     </ng-template>

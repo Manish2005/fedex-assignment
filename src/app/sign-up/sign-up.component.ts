@@ -7,6 +7,7 @@ import {ERROR_MESSAGES} from './sign-up.constants';
 import {FormValidationsService} from '../services/form-validations.service';
 import {ISignUpFormData, ISignUpRequest} from './sign-up.model';
 import {AccountService} from '../services/account.service';
+import {faCheckCircle} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,17 +15,39 @@ import {AccountService} from '../services/account.service';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnDestroy {
+  /**
+   *   Font awesome check circle icon displayed with signup success message
+   */
+  faCheckCircle = faCheckCircle;
 
-  signUpForm: FormGroup;
-
+  /**
+   * Validation error messages used by the form
+   */
   errorMessages = ERROR_MESSAGES;
 
+  /**
+   * Store subscriptions to easily unsubscribe before navigating away, to avoid memory leaks
+   */
   private subscriptions: any = {};
 
+  /**
+   * Reactive Form instance
+   */
+  signUpForm: FormGroup;
+
+  /**
+   * Flag set to true when signup successfully. Used as trigger to show success message
+   */
   signUpCompleted = false;
 
+  /**
+   * Flag set to true while submitting the form data. User as trigger to disable the submit button
+   */
   submitting = false;
 
+  /**
+   * Flag indicating if the previous submit returner API error
+   */
   error = false;
 
   constructor(
