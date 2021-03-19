@@ -9,10 +9,13 @@ html, body {
 
 body {
   background-color: #fafafa;
+  font-family: 'Roboto', serif;
 }
 
 input {
   &.ng-touched.ng-invalid {
     border-color: #f00 !important;
   }
+
+  font-family: 'Roboto', serif;
 }
