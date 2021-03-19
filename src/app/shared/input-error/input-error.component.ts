@@ -13,9 +13,6 @@ export class InputErrorComponent {
 
   infoIcon = faInfoCircle;
 
-  constructor() {
-  }
-
   /**
    * Get list of error keys
    */
